@@ -1,0 +1,72 @@
+.infoContainer {
+  text-align: center;
+  /* background-color: aliceblue; */
+  max-width: 100%;
+}
+.high {
+  text-align: left;
+}
+.infoRow {
+  padding: 5px 0;
+  border-radius: 4px;
+  border: 1px solid black;
+}
+#signImg {
+  width: 80px;
+}
+.firstRow {
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+#priceBox {
+  display: block;
+  color: white;
+  font-size: 3rem;
+}
+#changeBox {
+  font-size: 1.5rem;
+  background-color: green;
+  padding: 5px;
+  border-radius: 10px;
+}
+.positiveChangeToBox {
+  background-color: green;
+}
+.negativeChangeToBox {
+  background-color: red;
+}
+#exchangeBox {
+  margin-left: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  background-color: #132f4c;
+  border-radius: 15px;
+}
+#input {
+  font-size: 1.8rem;
+  color: white;
+  text-align: right;
+  background-color: transparent;
+}
+#input:focus {
+  outline: none;
+}
+
+.leftLine {
+  border-left: 1px solid #f7931a;
+}
+.descBox {
+  color: #76808b;
+  background-color: #132f4c;
+}
+
+#toWhite {
+  color: white;
+}
+#descBox {
+  margin-left: 20px;
+  border-radius: 20px;
+  background-color: #132f4c;
+}
