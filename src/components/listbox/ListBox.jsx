@@ -10,7 +10,9 @@ import { height } from "@mui/system";
 export default function ListBox(props) {
   return (
     <Card id="listBoxCard" className="cardEach" style={{ width: "12rem" }}>
-      <Card.Img variant="top" src={props.img} className="mb-0 pb-0" />
+      <Link to={`/info/${props.id}`}>
+        <Card.Img variant="top" src={props.img} className="mb-0 pb-0" />
+      </Link>
       <Card.Body className="mb-0 pb-0">
         <Card.Title className="mb-0 pb-0">
           {props.name} {props.code}

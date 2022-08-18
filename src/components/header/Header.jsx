@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <Container className="header">
       <Row>
-        <Col md={6} sx={12}>
+        <Col id md={6} sx={12}>
           <Link to="/">
             <h1>
               Cryp
