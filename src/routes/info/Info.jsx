@@ -68,6 +68,14 @@ export default function Info() {
   return (
     <div>
       <Header />
+      <div className="justify-start">
+        <Link className="" to="/">
+          <h1 className="no-underline hover:text-yel text-5xl">
+            Cryp
+            <span className=" text-yel  text-7xl">To</span>
+          </h1>
+        </Link>
+      </div>
       {loading ? (
         <div>
           <Loading />

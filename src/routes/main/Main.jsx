@@ -1,3 +1,6 @@
+import KeyboardDoubleArrowUpIcon from "@mui/icons-material/KeyboardDoubleArrowUp";
+import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
+import { Grid } from "@mui/material";
 import axios from "axios";
 import { useContext, useEffect } from "react";
 import { useState } from "react";
@@ -7,12 +10,14 @@ import ListBox from "../../components/listbox/ListBox";
 import Loading from "../../tools/Loading";
 import Info from "../info/Info";
 import "./main.css";
+import { Link } from "react-router-dom";
 
 export default function Main(name) {
   function card(each) {
     return (
       <ListBox
         id={each.id}
+        rank={each.market_cap_rank}
         key={each.id}
         img={each.image}
         name={each.name}
@@ -42,42 +47,110 @@ export default function Main(name) {
         console.log(error);
       });
   }, []);
-  function searchHandler(value) {}
+  function byMarketCapAs() {
+    return [...data].sort((a, b) => {
+      // eslint-disable-next-line no-unused-expressions
+      return b.market_cap - a.market_cap;
+    });
+  }
+  function byMarketCapDes() {
+    return [...data].sort((a, b) => {
+      // eslint-disable-next-line no-unused-expressions
+      return a.market_cap - b.market_cap;
+    });
+  }
+
+  function byChangeAs() {
+    return [...data].sort((a, b) => {
+      // eslint-disable-next-line no-unused-expressions
+      return b.price_change_percentage_24h - a.price_change_percentage_24h;
+    });
+  }
+  function byChangeDes() {
+    return [...data].sort((a, b) => {
+      // eslint-disable-next-line no-unused-expressions
+      return a.price_change_percentage_24h - b.price_change_percentage_24h;
+    });
+  }
+  function byPriceAs() {
+    return [...data].sort((a, b) => {
+      // eslint-disable-next-line no-unused-expressions
+      return b.current_price - a.current_price;
+    });
+  }
+  function byPriceDes() {
+    return [...data].sort((a, b) => {
+      // eslint-disable-next-line no-unused-expressions
+      return a.current_price - b.current_price;
+    });
+  }
+  function byRankDes() {
+    return [...data].sort((a, b) => {
+      // eslint-disable-next-line no-unused-expressions
+      return a.market_cap_rank - b.market_cap_rank;
+    });
+  }
+  function byRankAs() {
+    return [...data].sort((a, b) => {
+      // eslint-disable-next-line no-unused-expressions
+      return a.market_cap_rank - b.market_cap_rank;
+    });
+  }
+  function byNameAs() {
+    return [...data].sort((a, b) => {
+      // eslint-disable-next-line no-unused-expressions
+      let fa = a.name.toLowerCase(),
+        fb = b.name.toLowerCase();
+
+      if (fa < fb) {
+        return -1;
+      }
+      if (fa > fb) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+  function byNameDes() {
+    return [...data].sort((a, b) => {
+      // eslint-disable-next-line no-unused-expressions
+      let fa = a.name.toLowerCase(),
+        fb = b.name.toLowerCase();
+
+      if (fa > fb) {
+        return -1;
+      }
+      if (fa < fb) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+  // console.log(setData(byName));
   return (
     <div>
       <Header />
-      <Row>
-        <Col>
-          <input
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search..."
-            id="searchBox"
-            type="search"
-          ></input>
-        </Col>
-      </Row>
-      <Row>
-        {/* <Col md={12}>
-          <ButtonGroup size="lg" aria-label="Basic example">
-            <Button value="usd" variant="secondary">
-              Rank
-            </Button>
-            <Button value="rub" variant="secondary">
-              Change
-            </Button>
-            <Button value="try" variant="secondary">
-              Volume
-            </Button>
-
-            <Button value="gbp" variant="secondary">
-              Price
-            </Button>
-            <Button value="eur" variant="secondary">
-              EUR
-            </Button>
-          </ButtonGroup>
-        </Col> */}
-      </Row>
+      <div class="grid lg:grid-cols-2 md:grid-cols-2  justify-center ml-10">
+        <Link to="/">
+          <h1 className="no-underline hover:text-yel text-5xl">
+            Cryp
+            <span className=" text-yel  text-7xl">To</span>
+          </h1>
+        </Link>
+        <div class=" md:mt-6 xl:w-96">
+          <div class="input-group relative flex flex-wrap items-stretch w-full ">
+            <input
+              id="searchBox"
+              onChange={(e) => setSearchTerm(e.target.value)}
+              type="search"
+              className="form-control relative flex-auto min-w-0 block w-full px-3 py-2 text-lg font-normal text-yel bg-lightBlue bg-clip-padding border border-solid border-yel rounded transition ease-in-out m-0  focus:text-yel focus:bg-lightBlue focus:border-blue-600 focus:outline-none"
+              placeholder="Search..."
+              aria-label="Search"
+              aria-describedby="button-addon2"
+            />
+          </div>
+        </div>
+      </div>
 
       <div>
         {loading ? (
@@ -85,25 +158,110 @@ export default function Main(name) {
             <Loading />
           </div>
         ) : (
-          <Row>
-            <Col></Col>
-            <Col md={6} style={{ display: "flex", flexWrap: "wrap" }}>
-              <div id="cardContainer">
-                {data
-                  .filter((val) => {
-                    if (searchTerm === "") {
-                      return val;
-                    } else if (
-                      val.name.toLowerCase().includes(searchTerm.toLowerCase())
-                    ) {
-                      return val;
-                    }
-                  })
-                  .map(card)}
+          <div className="text-center ">
+            <section class="container mx-auto p-6 font-mono">
+              <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+                <div class="w-full overflow-x-auto ">
+                  <table class="w-full">
+                    <thead className="">
+                      <tr className="ml-10 h-20 text-md font-semibold tracking-wide text-left text-yel bg-gray-100 uppercase border-b border-yel">
+                        <th class=" py-3">
+                          Rank
+                          <button
+                            className=" "
+                            onClick={() => setData(byRankDes)}
+                          >
+                            <KeyboardDoubleArrowDownIcon className="hover:h-10 hover:w-10" />
+                          </button>
+                          <button
+                            className=""
+                            onClick={() => setData(byNameAs)}
+                          >
+                            <KeyboardDoubleArrowUpIcon className="hover:h-10 hover:w-10" />
+                          </button>
+                        </th>
+                        <th class=" px-4 py-3">
+                          Name
+                          <button
+                            className="ml-2 "
+                            onClick={() => setData(byNameDes)}
+                          >
+                            <KeyboardDoubleArrowDownIcon className="hover:h-10 hover:w-10" />
+                          </button>
+                          <button
+                            className=""
+                            onClick={() => setData(byRankAs)}
+                          >
+                            <KeyboardDoubleArrowUpIcon className="hover:h-10 hover:w-10" />
+                          </button>
+                        </th>
+                        <th class="px-4 py-3">
+                          PRICE
+                          <button
+                            className="ml-2 "
+                            onClick={() => setData(byPriceAs)}
+                          >
+                            <KeyboardDoubleArrowDownIcon className="hover:h-10 hover:w-10" />
+                          </button>
+                          <button
+                            className=""
+                            onClick={() => setData(byPriceDes)}
+                          >
+                            <KeyboardDoubleArrowUpIcon className="hover:h-10 hover:w-10" />
+                          </button>
+                        </th>
+                        <th class="px-4 py-3">
+                          CHANGE
+                          <button
+                            className="ml-2 "
+                            onClick={() => setData(byChangeDes)}
+                          >
+                            <KeyboardDoubleArrowDownIcon className="hover:h-10 hover:w-10" />
+                          </button>
+                          <button
+                            className=""
+                            onClick={() => setData(byChangeAs)}
+                          >
+                            <KeyboardDoubleArrowUpIcon className="hover:h-10 hover:w-10" />
+                          </button>
+                        </th>
+                        <th class="px-4 py-3">
+                          MERKET Cap
+                          <button
+                            className="ml-2 "
+                            onClick={() => setData(byMarketCapDes)}
+                          >
+                            <KeyboardDoubleArrowDownIcon className="hover:h-10 hover:w-10" />
+                          </button>
+                          <button
+                            className=""
+                            onClick={() => setData(byMarketCapAs)}
+                          >
+                            <KeyboardDoubleArrowUpIcon className="hover:h-10 hover:w-10" />
+                          </button>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-lightBlue">
+                      {data
+                        .filter((val) => {
+                          if (searchTerm === "") {
+                            return val;
+                          } else if (
+                            val.name
+                              .toLowerCase()
+                              .includes(searchTerm.toLowerCase())
+                          ) {
+                            return val;
+                          }
+                        })
+                        .map(card)}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </Col>
-            <Col></Col>
-          </Row>
+            </section>
+          </div>
         )}
       </div>
     </div>
