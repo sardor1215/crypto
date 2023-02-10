@@ -1,0 +1,57 @@
+.listbox {
+  border-bottom: 1px solid #76808b;
+  border-width: medium;
+}
+#listBoxCard {
+  color: #76808b;
+  background-color: #132f4c;
+}
+.cardEach {
+  font-family: "Space Mono", monospace;
+  padding: 5px;
+  margin: 20px 20px;
+}
+.div {
+  display: inline-block;
+}
+.positiveChange {
+  color: green;
+}
+.negativeChange {
+  color: red;
+}
+#icon {
+  width: 30px;
+}
+/* hr {
+  position: relative;
+  color: aliceblue;
+  margin-top: 0;
+
+  bottom: 0;
+  max-width: 1024px;
+} */
+
+#name {
+  width: 80px;
+}
+#code {
+  width: 50px;
+}
+#price {
+  width: 70px;
+}
+#change {
+  width: 70px;
+}
+#cap {
+  width: 110px;
+}
+#infoBtn {
+  width: 140px;
+}
+#img {
+  position: relative;
+  bottom: -8px;
+  width: 30px;
+}
