@@ -1,7 +1,5 @@
 import { FaExchangeAlt } from "react-icons/fa";
-
 import axios from "axios";
-import "./info.css";
 import {
   Col,
   Container,
@@ -81,163 +79,152 @@ export default function Info() {
           <Loading />
         </div>
       ) : (
-        <div>
-          <Container className="infoContainer">
-            <Row className="firstRow">
-              <Col>
-                <img id="signImg" src={data.image.large} />
-              </Col>
-              <Col className="leftLine">
-                <div>
-                  {data.name}
-                  {"("}
-                  {data.symbol.toUpperCase()}
-                  {")"}
-                </div>
+        <div className="">
+          <Row className="flex justify-center ">
+            <Col>
+              <img className="w-36" src={data.image.large} />
+            </Col>
+            <Col className="leftLine">
+              <div>
+                {data.name}
+                {"("}
+                {data.symbol.toUpperCase()}
+                {")"}
+              </div>
 
-                <div id="priceBox">
-                  {currencySign}
-                  {data.market_data.current_price[currency]}{" "}
-                  <span
-                    id="changeBox"
-                    className={
-                      data.market_data.price_change_percentage_24h > 0
-                        ? "positiveChangeToBox"
-                        : "negativeChangeToBox"
-                    }
-                  >
-                    {data.market_data.price_change_percentage_24h.toFixed(2)}%
-                  </span>
-                </div>
-              </Col>
-              <Col className="leftLine">
-                <div>
-                  HIGH:{" "}
-                  <span style={{ color: "white", fontSize: "2rem" }}>
-                    {currencySign}
-                    {data.market_data.high_24h[currency]}
-                  </span>
-                </div>
-
-                <div>
-                  LOW:{" "}
-                  <span style={{ color: "white", fontSize: "2rem" }}>
-                    {currencySign}
-                    {data.market_data.low_24h[currency]}
-                  </span>
-                </div>
-              </Col>
-              <Col className="leftLine">
-                <span>
-                  <ButtonGroup aria-label="Basic example">
-                    <Button
-                      onClick={(e) => currencyHandler(e.target.value)}
-                      value="usd"
-                      variant="secondary"
-                    >
-                      USD
-                    </Button>
-                    <Button
-                      onClick={(e) => currencyHandler(e.target.value)}
-                      value="rub"
-                      variant="secondary"
-                    >
-                      RUB
-                    </Button>
-                    <Button
-                      onClick={(e) => currencyHandler(e.target.value)}
-                      value="try"
-                      variant="secondary"
-                    >
-                      TRY
-                    </Button>
-                    <Button
-                      onClick={(e) => currencyHandler(e.target.value)}
-                      value="gbp"
-                      variant="secondary"
-                    >
-                      GBP
-                    </Button>
-                    <Button
-                      onClick={(e) => currencyHandler(e.target.value)}
-                      value="eur"
-                      variant="secondary"
-                    >
-                      EUR
-                    </Button>
-                  </ButtonGroup>
+              <div id="priceBox">
+                {currencySign}
+                {data.market_data.current_price[currency]}{" "}
+                <span
+                  id="changeBox"
+                  className={
+                    data.market_data.price_change_percentage_24h > 0
+                      ? "positiveChangeToBox"
+                      : "negativeChangeToBox"
+                  }
+                >
+                  {data.market_data.price_change_percentage_24h.toFixed(2)}%
                 </span>
-              </Col>
-            </Row>
-            <hr style={{ borderTop: "3px solid #f7931a" }}></hr>
-            <Row>
-              <Col>
-                <Row id="exchangeBox">
-                  <Col>
-                    <img src={data.image.small} />
-                    <span>
-                      <div style={{ fontSize: "1.4rem", color: "white" }}>
-                        {data.symbol.toUpperCase()}
-                      </div>
-                    </span>
-                  </Col>
-                  <Col className="leftLine">
-                    <input
-                      id="input"
-                      onChange={(e) => exchangeHandler(e.target.value, "1")}
-                      style={{ align: "right" }}
-                      placeholder={exchangeValue}
-                    />
-                  </Col>
-                  <Col>
-                    <img
-                      style={{ width: "50px", display: "inline-block" }}
-                      src={
-                        "https://s2.coinmarketcap.com/static/cloud/img/fiat-flags/USD.svg"
-                      }
-                    />
-                    <span>
-                      <div style={{ fontSize: "1.4rem", color: "white" }}>
-                        USD
-                      </div>
-                    </span>
-                  </Col>
-                  <Col className="leftLine">
-                    <input
-                      id="input"
-                      type="text"
-                      onChange={(e) => exchangeHandler(e.target.value, "2")}
-                      style={{ align: "right" }}
-                      placeholder={"$" + exchangeValueDollar}
-                    />
-                  </Col>
-                </Row>
-              </Col>
-              <Col md={4}>
-                <Card className="descBox">
-                  <ListGroup className="descBox">
-                    <ListGroup.Item className="descBox">
-                      Market Cap Rank:{" "}
-                      <span id="toWhite">{data.market_cap_rank} </span>
-                    </ListGroup.Item>
-                    <ListGroup.Item className="descBox">
-                      Release Date:{" "}
-                      <span id="toWhite">{data.genesis_date}</span>
-                    </ListGroup.Item>
-                    <ListGroup.Item className="descBox">
-                      Public Interest Score:{" "}
-                      <span id="toWhite">{data.public_interest_score}</span>
-                    </ListGroup.Item>
-                  </ListGroup>
-                </Card>
-              </Col>
-            </Row>
-            <Row>
-              <Col id="descBox" md={7}>
-                <div className="hidden md:block">{data.description.en}</div>
-              </Col>
-            </Row>
-          </Container>
+              </div>
+            </Col>
+            <Col className="leftLine">
+              <div>
+                HIGH:{" "}
+                <span style={{ color: "white", fontSize: "2rem" }}>
+                  {currencySign}
+                  {data.market_data.high_24h[currency]}
+                </span>
+              </div>
+
+              <div>
+                LOW:{" "}
+                <span style={{ color: "white", fontSize: "2rem" }}>
+                  {currencySign}
+                  {data.market_data.low_24h[currency]}
+                </span>
+              </div>
+            </Col>
+            <div className="gap-2 flex">
+              <Button
+                onClick={(e) => currencyHandler(e.target.value)}
+                value="usd"
+              >
+                USD
+              </Button>
+              <Button
+                onClick={(e) => currencyHandler(e.target.value)}
+                value="rub"
+              >
+                RUB
+              </Button>
+              <Button
+                onClick={(e) => currencyHandler(e.target.value)}
+                value="try"
+              >
+                TRY
+              </Button>
+              <Button
+                onClick={(e) => currencyHandler(e.target.value)}
+                value="gbp"
+              >
+                GBP
+              </Button>
+              <Button
+                className=""
+                onClick={(e) => currencyHandler(e.target.value)}
+                value="eur"
+              >
+                EUR
+              </Button>
+            </div>
+          </Row>
+          <hr style={{ borderTop: "3px solid #f7931a" }}></hr>
+          <Row>
+            <Col>
+              <Row id="exchangeBox">
+                <Col>
+                  <img src={data.image.small} />
+                  <span>
+                    <div style={{ fontSize: "1.4rem", color: "white" }}>
+                      {data.symbol.toUpperCase()}
+                    </div>
+                  </span>
+                </Col>
+                <Col className="leftLine">
+                  <input
+                    id="input"
+                    onChange={(e) => exchangeHandler(e.target.value, "1")}
+                    style={{ align: "right" }}
+                    placeholder={exchangeValue}
+                  />
+                </Col>
+                <Col>
+                  <img
+                    style={{ width: "50px", display: "inline-block" }}
+                    src={
+                      "https://s2.coinmarketcap.com/static/cloud/img/fiat-flags/USD.svg"
+                    }
+                  />
+                  <span>
+                    <div style={{ fontSize: "1.4rem", color: "white" }}>
+                      USD
+                    </div>
+                  </span>
+                </Col>
+                <Col className="leftLine">
+                  <input
+                    id="input"
+                    type="text"
+                    onChange={(e) => exchangeHandler(e.target.value, "2")}
+                    style={{ align: "right" }}
+                    placeholder={"$" + exchangeValueDollar}
+                  />
+                </Col>
+              </Row>
+            </Col>
+            <Col md={4}>
+              <Card className="descBox">
+                <ListGroup className="descBox">
+                  <ListGroup.Item className="descBox">
+                    Market Cap Rank:{" "}
+                    <span id="toWhite">{data.market_cap_rank} </span>
+                  </ListGroup.Item>
+                  <ListGroup.Item className="descBox">
+                    Release Date: <span id="toWhite">{data.genesis_date}</span>
+                  </ListGroup.Item>
+                  <ListGroup.Item className="descBox">
+                    Public Interest Score:{" "}
+                    <span id="toWhite">{data.public_interest_score}</span>
+                  </ListGroup.Item>
+                </ListGroup>
+              </Card>
+            </Col>
+          </Row>
+          <Row>
+            <Col id="descBox" md={7}>
+              <div className="hidden md:block">{data.description.en}</div>
+            </Col>
+          </Row>
         </div>
       )}
     </div>

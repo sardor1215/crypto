@@ -9,7 +9,7 @@ import Header from "../../components/header/Header";
 import ListBox from "../../components/listbox/ListBox";
 import Loading from "../../tools/Loading";
 import Info from "../info/Info";
-import "./main.css";
+
 import { Link } from "react-router-dom";
 
 export default function Main(name) {
@@ -47,6 +47,7 @@ export default function Main(name) {
         console.log(error);
       });
   }, []);
+
   function byMarketCapAs() {
     return [...data].sort((a, b) => {
       // eslint-disable-next-line no-unused-expressions
@@ -126,7 +127,7 @@ export default function Main(name) {
       return 0;
     });
   }
-  // console.log(setData(byName));
+
   return (
     <div>
       <Header />
@@ -164,9 +165,8 @@ export default function Main(name) {
                 <div class="w-full overflow-x-auto ">
                   <table class="w-full">
                     <thead className="">
-                      <tr className="ml-10 h-20 text-md font-semibold tracking-wide text-left text-yel bg-gray-100 uppercase border-b border-yel">
-                        <th class=" py-3">
-                          Rank
+                      <tr className="ml-10  text-md font-semibold tracking-wide text-left text-yel  uppercase border-b border-yel">
+                        <th class="pt-3 ml-2 text-center">
                           <button
                             className=" "
                             onClick={() => setData(byRankDes)}
@@ -180,7 +180,7 @@ export default function Main(name) {
                             <KeyboardDoubleArrowUpIcon className="hover:scale-125 ease-in-out duration-300" />
                           </button>
                         </th>
-                        <th class=" px-4 py-3">
+                        <th class=" px-10 pt-3">
                           Name
                           <button
                             className="ml-2 "
@@ -195,7 +195,7 @@ export default function Main(name) {
                             <KeyboardDoubleArrowUpIcon className="hover:scale-125 ease-in-out duration-300" />
                           </button>
                         </th>
-                        <th class="px-4 py-3">
+                        <th class="px-4 pt-3">
                           PRICE
                           <button
                             className="ml-2 "
@@ -210,7 +210,7 @@ export default function Main(name) {
                             <KeyboardDoubleArrowUpIcon className="hover:scale-125 ease-in-out duration-300" />
                           </button>
                         </th>
-                        <th class="px-4 py-3">
+                        <th class="pl-48  pt-3">
                           CHANGE
                           <button
                             className="ml-2 "
@@ -225,8 +225,8 @@ export default function Main(name) {
                             <KeyboardDoubleArrowUpIcon className="hover:scale-125 ease-in-out duration-300" />
                           </button>
                         </th>
-                        <th class="px-4 py-3">
-                          MERKET Cap
+                        <th class="px-10 pt-3">
+                          MARKET Cap
                           <button
                             className="ml-2 "
                             onClick={() => setData(byMarketCapDes)}
@@ -264,6 +264,17 @@ export default function Main(name) {
           </div>
         )}
       </div>
+      <footer className="bg-lightBlue text-center dark:bg-lightBlue lg:text-left">
+        <div className="p-4 text-center text-neutral-700 dark:text-neutral-200">
+          © 2024 Powered by
+          <a
+            className="text-neutral-800 dark:text-neutral-400"
+            href="https://github.com/sardor1215"
+          >
+            <span> </span>Sardor
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }

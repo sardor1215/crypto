@@ -1,4 +1,3 @@
-import "./listbox.css";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -9,11 +8,13 @@ import { height } from "@mui/system";
 
 export default function ListBox(props) {
   return (
-    <tr class="text-yel hover:bg-yel hover:text-lightBlue hover:scale-105 ease-in-out duration-300">
-      <td class=" text-ms font-semibold   text-center">
-        <span className=" ">{props.rank}</span>
+    <tr class="text-yel hover:bg-yel hover:text-lightBlue pb-1  ">
+      <td class=" text-ms font-semibold w-16 text-center ">
+        <Link to={`/info/${props.id}`}>
+          <span className="">{props.rank}</span>
+        </Link>
       </td>
-      <td class="px-10 py-1 ">
+      <td class="px-10  ">
         <Link to={`/info/${props.id}`}>
           <div class="flex items-center text-sm ">
             <div class="relative w-10 h-10 mr-3 rounded-full md:block">
@@ -29,28 +30,26 @@ export default function ListBox(props) {
               ></div>
             </div>
             <div>
-              <p class="font-semibold text-white hover:text-xl ease-in-out duration-300 ">
-                {props.name}
-              </p>
+              <p class="font-semibold   text-white  ">{props.name}</p>
             </div>
           </div>
         </Link>
       </td>
 
-      <td class="py-3 text-ms font-semibold   text-start">
+      <td class=" text-ms font-semibold   text-start">
         <span className="ml-6 ">${props.price}</span>
       </td>
 
-      <td class="px-4 py-3 text-xs ">
-        <span class="py-1 font-semibold text-base text-green-700 bg-green-100 rounded-sm">
+      <td class="px-4 text-xs ">
+        <span class=" font-semibold text-base text-green-700  rounded-sm">
           <span
-            className={props.change > 0 ? "positiveChange" : "negativeChange"}
+            className={props.change > 0 ? "positiveChange" : "text-red-700"}
           >
             {props.change.toFixed(2)}%
           </span>
         </span>
       </td>
-      <td class="px-4 py-3 font-semibold text-base  text-start">
+      <td class="px-4  font-semibold text-base  text-start">
         <span className="ml-4 ">{props.cap.toLocaleString("de-DE")}</span>
       </td>
     </tr>

@@ -38,15 +38,16 @@ export default function Header() {
     "Saturday",
   ];
   return (
-    <div class="bg-white hidden md:block content-center">
+    <div class=" hidden md:block content-center">
       <div>
         {loading ? (
           <div>
-            <Loading />
+            <div class="animate-ping   w-2 h-2 rounded-full bg-sky-400 opacity-75"></div>
+            <p>Loading</p>
           </div>
         ) : (
-          <div class="bg-white">
-            <div class="border  px-6">
+          <div class="">
+            <div class="border-b  px-6">
               <div class=" flex items-center justify-between">
                 <div class="flex gap-x-2 py-1 px-2">
                   <span class="text-sm font-medium">
@@ -55,24 +56,24 @@ export default function Header() {
                 </div>
 
                 <div class="flex gap-x-8 text-yel font-semibold">
-                  <span class=" rounded-sm py-1 px-2 text-sm  hover:bg-gray-100">
+                  <span class=" rounded-sm py-1 px-2 text-sm  ">
                     Cryptos:{data.data.active_cryptocurrencies}
                   </span>
-                  <span class=" rounded-sm py-1 px-2 text-sm  hover:bg-gray-100">
+                  <span class=" rounded-sm py-1 px-2 text-sm  ">
                     Exchanges:{data.data.markets}
                   </span>
-                  <span class=" rounded-sm py-1 px-2 text-sm  hover:bg-gray-100">
+                  <span class=" rounded-sm py-1 px-2 text-sm  ">
                     Upcoming Icos:{data.data.upcoming_icos}
                   </span>
-                  <span class=" rounded-sm py-1 px-2 text-sm  hover:bg-gray-100">
+                  <span class=" rounded-sm py-1 px-2 text-sm  ">
                     Ongoing Icos:{data.data.ongoing_icos}
                   </span>
-                  <span class=" rounded-sm py-1 px-2 text-sm  hover:bg-gray-100">
+                  <span class=" rounded-sm py-1 px-2 text-sm  ">
                     Ended Icos:{data.data.ended_icos}
                   </span>
                 </div>
 
-                <span class=" rounded-sm py-1 px-2 text-sm  hover:bg-gray-100">
+                <span class=" rounded-sm py-1 px-2 text-sm  ">
                   {clockState}
                 </span>
               </div>
